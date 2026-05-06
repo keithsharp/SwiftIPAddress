@@ -80,7 +80,7 @@ fileprivate let latterQuads = [  ".0",  ".1",  ".2",  ".3",  ".4",  ".5",  ".6",
 ///
 /// - Author: Andrew Dunn.
 ///
-public struct IPv4Address: LosslessStringConvertible, Hashable {
+public struct IPv4Address: LosslessStringConvertible, Hashable, Codable {
     // Store the value in an array to enable simple typecasting to an array of
     // [UInt8] values.
     fileprivate let value: UInt32
@@ -358,7 +358,7 @@ public struct IPv4Address: LosslessStringConvertible, Hashable {
 /// Pre-computes the mask and masked network address at construction time so
 /// membership tests (`IPv4Address.isIncluded(in:)`) are a single bitmask-and-compare
 /// with no parsing or allocation.
-public struct IPv4CIDR: Hashable {
+public struct IPv4CIDR: Hashable, Codable {
     // Stored in the same little-endian layout as IPv4Address.value.
     fileprivate let maskedNetwork: UInt32
     fileprivate let mask: UInt32

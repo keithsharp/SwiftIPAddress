@@ -49,7 +49,7 @@ fileprivate let F: UInt8 = 0x46
 ///
 /// - Author: Andrew Dunn.
 ///
-public struct IPv6Address: LosslessStringConvertible, Hashable {
+public struct IPv6Address: LosslessStringConvertible, Hashable, Codable {
     fileprivate let high, low: UInt64
 
     public static func == (lhs: IPv6Address, rhs: IPv6Address) -> Bool {
@@ -528,7 +528,7 @@ public struct IPv6Address: LosslessStringConvertible, Hashable {
 /// Pre-computes the masks and masked network halves at construction time so
 /// membership tests (`IPv6Address.isIncluded(in:)`) are two bitmask-and-compare
 /// operations with no parsing or allocation.
-public struct IPv6CIDR: Hashable {
+public struct IPv6CIDR: Hashable, Codable {
     // Stored in the same little-endian layout as IPv6Address.high / .low.
     fileprivate let maskedNetworkHigh: UInt64
     fileprivate let maskedNetworkLow: UInt64
